@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack Dashboard</title>
+    <link rel="stylesheet" href="dashboard-style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href='https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/pikaday/pikaday.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/moment/moment.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>EduTrack Dashboard</h1>
+            <nav>
+                <a href="dashboard.html">Home</a>
+                <a href="assistant.html">AI assistant</a>
+                <a href="timetable.html">Timetable</a>
+                <a href="Predictor.html">Marks Predictor</a>
+                <a href="Performance estimator.html">Performance Analyzer</a>
+                <a href="login.html">Logout</a>
+                <button id="themeToggle" aria-label="Toggle Dark Mode">🌙</button>
+            </nav>
+            
+        </header>
+        <main>
+            <section class="overview">
+                <h2>Academic Overview</h2>
+                <div class="card">
+                    <div class="gpa-container">
+                        <div class="semester-gpa">
+                            <h4>Semester SGPA</h4>
+                            <div id="sgpaInputs">
+                                <!-- SGPA inputs will be generated here -->
+                            </div>
+                            <button id="editGPAButton">Edit</button>
+                        </div>
+                        <div class="cgpa">
+                            <h4>Overall CGPA</h4>
+                            <p id="cgpa">0.0</p>
+                            <div class="target-cgpa">
+                                <h4>Target CGPA</h4>
+                                <input type="number" id="targetCgpa" step="0.01" placeholder="Enter your target CGPA" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+            <section class="progress">
+                <h2>Progress Reports</h2>
+                <canvas id="sgpaComparisonChart"></canvas>
+                <canvas id="cgpaComparisonChart"></canvas>
+                <div class="card upcoming">
+                    <h3>Upcoming Assignments</h3>
+                    <ul id="assignments">
+                        <li>Maths Assignment - Due: July 25</li>
+                        <li>AIML Project - Due: July 30</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="calendar">
+                <h2>Academic Calendar</h2>
+                <div class="calendar-input-container">
+                    <input type="text" id="calendarInput" placeholder="Select a date" readonly>
+                    <button id="calendarToggle" aria-label="Open calendar">
+                        📅
+                    </button>
+                </div>
+                <div id="eventsBox">
+                    <h3>Events and Goals</h3>
+                    <ul id="eventsList"></ul>
+                </div>
+                <button id="addEventButton">Add Event/Goal/Due</button>
+                <div id="eventForm" class="hidden">
+                    <h3>Add New Event/Goal/Due</h3>
+                    <form id="eventFormContent">
+                        <label for="eventDate">Date:</label>
+                        <input type="date" id="eventDate" required><br>
+                        <label for="eventTitle">Title:</label>
+                        <input type="text" id="eventTitle" required><br>
+                        <label for="eventType">Type:</label>
+                        <select id="eventType">
+                            <option value="Event">Event</option>
+                            <option value="Goal">Goal</option>
+                            <option value="Due">Due</option>
+                        </select><br>
+                        <button type="submit">Add</button>
+                        <button type="button" id="cancelButton">Cancel</button>
+                    </form>
+                </div>
+            </section>                    
+        </main>
+        <footer>
+            <p>&copy; 2024 EduTrack</p>
+        </footer>
+    </div>
+    <a href="assistant.html" class="floating-button" aria-label="Go to Assistant">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M320 0c13.3 0 24 10.7 24 24l0 72 104 0c53 0 96 43 96 96l0 224c0 53-43 96-96 96l-256 0c-53 0-96-43-96-96l0-224c0-53 43-96 96-96l104 0 0-72c0-13.3 10.7-24 24-24zM192 144c-26.5 0-48 21.5-48 48l0 224c0 26.5 21.5 48 48 48l256 0c26.5 0 48-21.5 48-48l0-224c0-26.5-21.5-48-48-48l-128 0-128 0zM48 224l16 0 0 192-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0 0-192 16 0zM208 384l32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm96 0l32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm96 0l32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zM200 256a40 40 0 1 1 80 0 40 40 0 1 1 -80 0zm200-40a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg>
+    </a>   
+
+    <script src="dashboard-js.js"></script>
+</body>
+</html>

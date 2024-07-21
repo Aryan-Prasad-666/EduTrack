@@ -1,0 +1,225 @@
+body{
+    background-color:  #ecf8ff;
+    color: #2c3e50;
+}
+
+main{
+    display: flex;
+}
+
+.sidebar{
+    margin: 1rem;
+    width: 40%;
+}
+
+.timetable {
+    margin: 1rem;
+    width: 50%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#timetableContainer{
+    width: 100%;
+}
+
+.timetable h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.timetable-entry {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: larger;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.timetable-entry p {
+    margin: 0;
+}
+
+#themeToggle {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#themeToggle:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+#calendarContainer {
+    margin-top: 30px;
+}
+
+.calendar {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+    
+}
+
+#calendarToggle {
+    padding: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 0 8px 8px 0;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#calendarToggle:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+#calendarInput {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px 0 0 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-left: 0.7rem;
+}
+.task-done-button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.task-done-button:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+}
+.task-done {
+    text-decoration: line-through;
+    color: #7f8c8d;
+}
+
+.progress {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.progress h2{
+    margin-bottom: 1rem;
+}
+
+.progress-container {
+    background-color: #f1f1f1;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    position: relative;
+    height: 25px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #3498db;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+#progressPercentage {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #3498db;
+}
+.task-done {
+    text-decoration: line-through;
+    color: #7f8c8d;
+}
+
+.task-done-button.completed {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.task-done-button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.task-done-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+#editTimetable {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+}
+
+#editTimetable:hover {
+    background-color: #d35400;
+    transform: scale(1.05);
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+    width: 60px; 
+    height: 60px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28px; 
+    line-height: 60px; 
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.floating-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+.floating-button svg {
+    width: 50%;
+    height: 50%; 
+    fill: #ffffff; 
+}
